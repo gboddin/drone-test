@@ -1,0 +1,6 @@
+pipeline:
+  test-drone-plugin:
+    image: fpfis/drone-plugin-test
+    one_setting: test
+    another_setting: test
+    secrets: [ my_secret ]
