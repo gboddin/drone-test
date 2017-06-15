@@ -2,5 +2,6 @@ pipeline:
   test-drone-plugin:
     image: fpfis/drone-plugin-test
     one_setting: test
+    secret_forward: ${MY_SECRET}
     another_setting: test
     secrets: [ my_secret ]
