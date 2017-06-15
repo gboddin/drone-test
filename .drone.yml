@@ -4,4 +4,7 @@ pipeline:
     one_setting: test
     secret_forward: ${MY_SECRET}
     another_setting: test
-    secrets: [ my_secret ]
+    secrets: 
+      - my_secret
+      - source: my_secret
+        target: my_super_secret
