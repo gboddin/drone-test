@@ -1,11 +1,49 @@
 pipeline:
-  test-drone-plugin:
-    image: fpfis/drone-plugin-test
-    one_setting: test
-    secret_forward: ${MY_SECRET}
-    another_setting: test
-    secrets: 
-      - source: my_secret
-        target: my_not_secret
-      - source: my_secret
-        target: my_super_secret
+  test-drone-pipeline-1:
+    image: fpfis/php56-dev
+    commands:
+      - export
+      - echo "Running everytime"
+
+  test-drone-pipeline-2:
+    image: fpfis/php56-dev
+    commands:
+      - echo "Running only on pr from demo to master"
+    when:
+      event: pull_request
+      refspec: "demo:master"
+
+  test-drone-pipeline-3:
+    image: fpfis/php56-dev
+    commands:
+      - echo "Running only on pr from demo2 to master"
+    when:
+      event: pull_request
+      refspec: "demo2:master"
+ 
+  test-drone-pipeline-4:
+    image: fpfis/php56-dev
+    commands:
+      - export
+      - echo "Running when branch is master"
+    when:
+      event: push
+      branch: master
+
+
+  test-drone-pipeline-5:
+    image: fpfis/php56-dev
+    commands:
+      - echo "Running only on pr from demo and demo2 to masterr"
+    when:
+      event: pull_request
+      refspec: [ "demo:master", "demo2:master" ]
+
+
+  test-drone-pipeline-6:
+    image: fpfis/php56-dev
+    commands:
+      - echo "Running only on pr from demo/* to masterr"
+    when:
+      event: pull_request
+      refspec: [ "demo/*:master" ]
