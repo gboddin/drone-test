@@ -1,4 +1,3 @@
-# LOVE RPM \o/
 pipeline:
   test-drone-pipeline-1:
     image: fpfis/php56-dev
@@ -44,7 +43,7 @@ pipeline:
   test-drone-pipeline-6:
     image: fpfis/php56-dev
     commands:
-      - echo "Running only on pr from demo/* to masterr"
+      - echo "Running only on pr from ephemeral/* to master"
     when:
       event: pull_request
-      refspec: [ "demo/*:master" ]
+      refspec: [ "ephemeral/*:master" ]
